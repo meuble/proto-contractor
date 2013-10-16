@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= csrf_meta_tags %>
+    <link rel="shortcut icon" type="image/x-icon" href="<%= asset_path("favicon.png") %>" />
+    <link rel="icon" type="image/png" href="<%= asset_path("favicon.png") %>" />
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu|Raleway|Telex:400,700' rel='stylesheet' type='text/css'>
+    <title>ProtoContractor</title>
+    <%= yield :meta_tags %>
+    <%= mobile_viewport_meta_tags "sbz.png" %>
+    <%= stylesheet_link_tag "application", :media => "all", :debug => Rails.env.development? %>
+  </head>
+  <body class="<%= "#{"wrapper-admin" if @admin} wrapper-#{device_type}" "#{controller.controller_name}-#{controller.action_name}" %>">
+    <%= render :partial => "shared/environment" %>
+    <div class="container container-header">
+    <% unless Rails.env.production? %>
+      <%= render_flash_messages %>
+      <p class="alert"><%= session.inspect %> - <%= @current_user.inspect %></p>
+    <% end %>
+    <div class="container container-body">
+      <%= render :partial => "shared/header" %>
+      <%= yield %>
+    </div>
+    <div class="container container-footer">
+      <p class="inner">Conception &amp; Réalisation Sociabliz. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </div>
+    <!-- </div> -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+    <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+    <%= javascript_include_tag "application", :debug => Rails.env.development? %>
+    <%= yield :javascripts %>
+  </body>
+</html>

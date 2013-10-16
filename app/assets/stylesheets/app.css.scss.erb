@@ -1,0 +1,97 @@
+
+$baseFontSize: 13px;
+
+@import "twitter/bootstrap";
+@import "twitter/bootstrap-responsive";
+@import "bourbon";
+
+$corail: #E67373;
+
+@mixin reset{
+  margin: 0;
+  padding: 0;
+}
+
+@mixin font{
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-shadow: 0 1px 1px rgba(255,255,255,.3);
+  font-family: Ubuntu, "Helvetica Neue", Helvetica, Arial;
+}
+body, button, select, input, textarea{
+  @include font;
+}
+
+body{
+  background: tint(#F2EEE1, 20%);
+}
+a{
+  color: #3078B3;
+  font-weight: bold;
+}
+.btn img{ position: relative; top: -2px; left: -2px; }
+.btn-fb, .btn-fb:hover,.btn-fb:focus, .btn-fb:active{
+  background: #3B5998;
+  color: #fff;
+  @include box-shadow(none);
+  border: 1px solid darken(#3B5998, 5%);
+  @include linear-gradient(#3B5998, darken(#3B5998, 5%));
+  text-shadow: 0 0 0;
+}
+.btn-fb:hover,.btn-fb:focus, .btn-fb:active{
+  color: tint(#3B5998, 80%);
+}
+/*.nav-tabs > li > a, .nav-tabs > .active > a, .nav-tabs > .active > a:hover, .nav-tabs > .active > a:focus{
+  background: tint(#F2EEE1, 50%);
+  font-weight: normal;
+}*/
+.container{
+  @include reset;
+  margin: 10% auto;
+  padding: 2%;
+  width: 500px !important;
+  border: 1px solid darken(#F2EEE1, 3%);
+  background: tint(#F2EEE1, 50%);
+  @include border-radius(5px);
+}
+.message-new{
+  text-align: center;
+  
+  textarea{ 
+    padding: 2%;
+    width: 95%;
+    height: 150px;
+  }
+}
+.table th, .table td{
+  border: none;
+}
+
+.error-label{
+  label{
+    color: #E01B5D;
+  }
+}
+.wrapper-admin{
+  h1{
+    font-size: 18px;
+    letter-spacing: -1px;
+  }
+  select{
+    width: 10%;
+  }
+  textarea{
+    height: 100px;
+    width: 60%;
+  }
+  .actions{
+    text-align: center;
+  }
+}
+
+.footer{
+  margin-top: 50px;
+  padding-top: 10px;
+  border-top: 1px dotted #ddd;
+  text-align: center;
+}

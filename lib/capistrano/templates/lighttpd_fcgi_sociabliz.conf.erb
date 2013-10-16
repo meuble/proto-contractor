@@ -1,0 +1,83 @@
+# Lighttpd configuration file
+#
+# Standard setup for RoR hosting on ror.bearstech.com (with FastCGI)
+
+server.modules = (
+  "mod_access",
+  "mod_accesslog",
+  "mod_fastcgi",
+#  "mod_compress",
+#  "mod_expire",
+)
+
+#
+# FastCGI setup. Nice features include:
+# - Lighty automatically starts/stops the fastcgi instances for you
+# - Lighty serves static files, not your app
+# - Lighty does its job (HTTP stack), your app does its job (the rest)
+#
+
+$HTTP["host"] =~ ".*" {
+  server.document-root     = "/home/ror/<%= application %>/current/public",
+  server.error-handler-404 = "/dispatch.fcgi",
+  index-file.names         = ( "dispatch.fcgi", "index.html" ),
+
+  fastcgi.server = ( ".fcgi" => ((
+      "max-procs"       => <%= lighty_max_proc ? lighty_max_proc.to_s : '2' %>,
+      "socket"          => "/home/ror/<%= application %>/current/tmp/sockets/fcgi.socket",
+      "bin-path"        => "/home/ror/<%= application %>/current/public/dispatch.fcgi",
+      "bin-environment" => (
+        "RAILS_ENV" => "production",
+        "GEM_HOME"  => "/home/ror/gem",
+        "RUBYLIB"   => "/home/ror/lib",
+        "PATH"      => "/home/ror/bin:/usr/bin:/bin",
+      )
+    ))
+  )
+}
+
+
+#
+# Various useful options you may tweak
+#
+
+url.access-deny      = (
+  "~",
+  ".svn"
+)
+
+dir-listing.encoding = "utf-8"
+server.dir-listing   = "enable"
+
+#compress.cache-dir   = "/home/ror/http/tmp/compress/"
+#compress.filetype    = ( "text/plain", "text/html", "text/css", "text/javascript" )
+
+#expire.url           = ( "/avatar/" => "access 2 hours" )
+
+
+#
+# Those defaults are very sane, please don't change them unless
+# you really know what you are doing. Thank you.
+#
+# IMPORTANT: don't modify log file paths, they are properly rotated via
+# /etc/logrotate.d/lighttpd. You risk filling up your disk space.
+#
+
+server.port             = 8080
+server.username         = "ror"
+server.groupname        = "ror"
+server.pid-file         = "/home/ror/http/tmp/lighttpd.pid"
+server.document-root    = "/home/ror/http/default"
+server.errorfile-prefix = "/home/ror/http/default/error-"
+server.errorlog         = "/home/ror/http/log/error.log"
+accesslog.filename      = "/home/ror/http/log/access.log"
+
+# 2009-16-23 lbonnet@bearstech.com
+# disable keepalive for WebKit, fixes weird upload bugs on some apps
+$HTTP["useragent"] =~ "^(.*MSIE.*)|(.*AppleWebKit.*)$" {
+  server.max-keep-alive-requests = 0
+}
+
+
+include_shell "/usr/share/lighttpd/create-mime.assign.pl"
+include_shell "/usr/share/lighttpd/include-conf-enabled.pl"

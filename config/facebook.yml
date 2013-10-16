@@ -1,0 +1,4 @@
+development:
+  app_id: 120476474678361
+  app_secret: b438d10c29f6518d6ff7224f0079b769
+  callback_url: "http://macboobs.sociabliz.org:8080/"

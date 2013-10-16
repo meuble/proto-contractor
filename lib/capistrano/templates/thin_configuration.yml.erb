@@ -1,0 +1,14 @@
+---
+   environment: production
+   chdir: /home/ror/<%= application %>/current/
+   address: 127.0.0.1
+   user: ror
+   group: ror
+   port: 4567
+   pid: /home/ror/<%= application %>/shared/pids/thin.pid
+   log: /home/ror/<%= application %>/shared/log/thin.log
+   max_conns: 1024
+   timeout: 30
+   max_persistent_conns: 512
+   daemonize: true
+   servers: 2
