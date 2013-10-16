@@ -1,4 +1,9 @@
 development:
-  app_id: 120476474678361
-  app_secret: b438d10c29f6518d6ff7224f0079b769
-  callback_url: "http://macboobs.sociabliz.org:8080/"
+  app_id: 45839571943
+  app_secret: c9f598f824f0b05350aac81f4c6c19b8
+  callback_url: "http://proto-contractor.herokuapp.com"
+
+production:
+  app_id: 45839571943
+  app_secret: c9f598f824f0b05350aac81f4c6c19b8
+  callback_url: "http://proto-contractor.herokuapp.com"

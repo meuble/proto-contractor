@@ -29,7 +29,7 @@ class Contractor
     
     def self.notify(recipient, message)
       self.graph.put_connections(recipient, "notifications", 
-        href: "http://macboobs.sociabliz.org:8080", 
+        href: "http://proto-contractor.herokuapp.com", 
         template: message, 
         ref: "reply_notif"
       )
