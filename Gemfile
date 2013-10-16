@@ -6,6 +6,7 @@ gem 'rack-ssl', require: 'rack/ssl'
 gem 'rack-protection'
 # database
 gem 'mysql2'
+gem "pg"
 gem 'activerecord-mysql-adapter'
 # misc
 gem 'bcrypt-ruby', '~> 3.0.0'
