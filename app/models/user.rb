@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   attr_accessible :twitter_id, :facebook_id
 
   validates :twitter_id, uniqueness: true, if: :twitter_id?
-  validates :facebook_id, uniqueness: true, if: :twitter_id?
+  validates :facebook_id, uniqueness: true, if: :facebook_id?
   validate :validates_any_uid
   
   def validates_any_uid

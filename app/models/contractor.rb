@@ -46,10 +46,10 @@ class Contractor
 
     def self.client
       client = Twitter::REST::Client.new do |config|
-        config.consumer_key        = "RP4BAzWnz57p8UhWDnw"
-        config.consumer_secret     = "HRZhqoJQHiSscR4TVvO4Eev2NlJqmK60YH5TWJ4OOA"
-        config.access_token        = "731049158-w8FyLtfePtXamg3GORzdBEYWZo9Itpr191pbCqDy"
-        config.access_token_secret = "kjL3MoBUqAmmSqSSnBNavEnsIXdzaORXqe14oHV6M"
+        config.consumer_key        = "ITF2qtoraP3ZZtBOhkoi5w"
+        config.consumer_secret     = "Olth8UjwpP0RjS8p9aHVrPjFqAvJSVZlB9y4RZNb1E"
+        config.access_token        = "1966626704-RNYR8hJfOAyYC8DiFJWRQnbLxRCBDh7vVJJOxe9"
+        config.access_token_secret = "tcHpawC9zTD9NvWxhndY0XLirn6doC3Es3MzLgvWKs"
       end
     end
   

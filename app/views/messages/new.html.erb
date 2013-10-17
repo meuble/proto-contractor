@@ -24,10 +24,12 @@
     
     <div class="tab-pane fade <%= "active in" if params[:tab] == "register" %>" id="register">
       <%= form_for :user, url: users_url do |f| %>
-      <div class="input-append">
-        <%= f.text_field :twitter_id, placeholder: "@nomducomptetwitter sans @", "data-user-uid" => 1 %>
-        <button type="submit" class="btn"><%= image_tag "twitter.png" %> Enregistrer</button>
-      </div>
+        <div class="input-append">
+          <%= f.text_field :twitter_id, placeholder: "@nomducomptetwitter sans @", "data-user-uid" => 1 %>
+          <button type="submit" class="btn"><%= image_tag "twitter.png" %> Enregistrer</button>
+        </div>
+      <% end %>
+      <%= form_for :user, url: users_url do |f| %>
         <p>
           <button type="submit" value="fb" class="btn btn-fb" data-fb-login="1"><%= image_tag "facebook.png" %>  Facebook Connect</button>
         </p>
