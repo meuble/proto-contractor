@@ -4,9 +4,9 @@ class UsersController < ApplicationController
 
   def create
     console(request.format)
-    if params["accessToken"]
+    if params["name"]
       respond_to do |format|
-        format.all{ render json: { user_id: params["userID"] } }
+        format.all{ render json: { user_id: params["id"] } }
       end
     else
       @user = User.new(params[:user])
